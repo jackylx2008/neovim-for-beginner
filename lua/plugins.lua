@@ -64,28 +64,28 @@ function M.setup()
     }
 
     -- Notification
-    use {
-      "rcarriga/nvim-notify",
-      event = "BufReadPre",
-      config = function()
-        require("config.notify").setup()
-      end,
-      disable = false,
-    }
-    use {
-      "simrat39/desktop-notify.nvim",
-      config = function()
-        require("desktop-notify").override_vim_notify()
-      end,
-      disable = true,
-    }
-    use {
-      "vigoux/notifier.nvim",
-      config = function()
-        require("notifier").setup {}
-      end,
-      disable = true,
-    }
+    -- use {
+    --   "rcarriga/nvim-notify",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("config.notify").setup()
+    --   end,
+    --   disable = false,
+    -- }
+    -- use {
+    --   "simrat39/desktop-notify.nvim",
+    --   config = function()
+    --     require("desktop-notify").override_vim_notify()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "vigoux/notifier.nvim",
+    --   config = function()
+    --     require("notifier").setup {}
+    --   end,
+    --   disable = true,
+     -- }
 
     -- Colorscheme
     use {
