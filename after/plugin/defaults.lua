@@ -42,7 +42,7 @@ opt.splitright = true
 opt.laststatus = 3 -- Global statusline
 opt.cmdheight = 1 -- 0
 opt.scrollback = 100000
-opt.splitkeep = "screen"
+-- opt.splitkeep = "screen"
 opt.hidden = true
 
 -- Change to use lualine.nvim
