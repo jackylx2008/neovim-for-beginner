@@ -75,25 +75,3 @@ opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
--- opt.foldcolumn = "1"
--- opt.foldlevel = 99
--- opt.foldlevelstart = -1
--- opt.foldenable = true
-
--- Copilot
--- cmd [[
---     imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
---     let g:copilot_no_tab_map = v:true
--- ]]
-
--- GUI
-opt.guifont = "Fira_Code:h14"
-
-if g.neovide then
-  g.neovide_transparency = 0.9
-  g.neovide_fullscreen = true
-end
-
--- Load filetype.lua
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0
