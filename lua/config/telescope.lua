@@ -42,43 +42,43 @@ function M.setup()
   local telescope = require "telescope"
 
   -- Custom previewer
-  local previewers = require "telescope.previewers"
-  local Job = require "plenary.job"
-  local preview_maker = function(filepath, bufnr, opts)
-    filepath = vim.fn.expand(filepath)
-    Job:new({
-      command = "file",
-      args = { "--mime-type", "-b", filepath },
-      on_exit = function(j)
-        local mime_type = vim.split(j:result()[1], "/")[1]
-
-        if mime_type == "text" then
-          -- Check file size
-          vim.loop.fs_stat(filepath, function(_, stat)
-            if not stat then
-              return
-            end
-            if stat.size > 500000 then
-              return
-            else
-              previewers.buffer_previewer_maker(filepath, bufnr, opts)
-            end
-          end)
-        else
-          vim.schedule(function()
-            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
-          end)
-        end
-      end,
-    }):sync()
-  end
+  -- local previewers = require "telescope.previewers"
+  -- local Job = require "plenary.job"
+  -- local preview_maker = function(filepath, bufnr, opts)
+  --   filepath = vim.fn.expand(filepath)
+  --   Job:new({
+  --     command = "file",
+  --     args = { "--mime-type", "-b", filepath },
+  --     on_exit = function(j)
+  --       local mime_type = vim.split(j:result()[1], "/")[1]
+  --
+  --       if mime_type == "text" then
+  --         -- Check file size
+  --         vim.loop.fs_stat(filepath, function(_, stat)
+  --           if not stat then
+  --             return
+  --           end
+  --           if stat.size > 500000 then
+  --             return
+  --           else
+  --             previewers.buffer_previewer_maker(filepath, bufnr, opts)
+  --           end
+  --         end)
+  --       else
+  --         vim.schedule(function()
+  --           vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
+  --         end)
+  --       end
+  --     end,
+  --   }):sync()
+  -- end
 
   telescope.setup {
     defaults = {
       prompt_prefix = icons.ui.Telescope .. " ",
       selection_caret = " ",
       -- path_display = { "smart" },
-      buffer_previewer_maker = preview_maker,
+      -- buffer_previewer_maker = preview_maker,
       mappings = {
         i = {
           ["<C-j>"] = actions.move_selection_next,
@@ -114,20 +114,20 @@ function M.setup()
         hidden = true,
         find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
       },
-      git_files = {
-        theme = "dropdown",
-        previewer = false,
-        mappings = {
-          n = {
-            ["y"] = nvb_actions.file_path,
-            ["s"] = nvb_actions.visidata,
-          },
-          i = {
-            ["<C-y>"] = nvb_actions.file_path,
-            ["<C-s>"] = nvb_actions.visidata,
-          },
-        },
-      },
+      -- git_files = {
+      --   theme = "dropdown",
+      --   previewer = false,
+      --   mappings = {
+      --     n = {
+      --       ["y"] = nvb_actions.file_path,
+      --       ["s"] = nvb_actions.visidata,
+      --     },
+      --     i = {
+      --       ["<C-y>"] = nvb_actions.file_path,
+      --       ["<C-s>"] = nvb_actions.visidata,
+      --     },
+      --   },
+      -- },
       buffers = {
         theme = "dropdown",
         previewer = false,
