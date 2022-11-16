@@ -386,45 +386,45 @@ local function code_keymap()
         },
         m = { "<cmd>TermExec cmd='nodemon -e py %'<cr>", "Monitor" },
       }
-    elseif ft == "lua" then
-      keymap_c = {
-        name = "Code",
-        r = { "<cmd>luafile %<cr>", "Run" },
-      }
-    elseif ft == "rust" then
-      keymap_c = {
-        name = "Code",
-        r = { "<cmd>execute 'Cargo run' | startinsert<cr>", "Run" },
-        D = { "<cmd>RustDebuggables<cr>", "Debuggables" },
-        h = { "<cmd>RustHoverActions<cr>", "Hover Actions" },
-        R = { "<cmd>RustRunnables<cr>", "Runnables" },
-      }
-    elseif ft == "go" then
-      keymap_c = {
-        name = "Code",
-        r = { "<cmd>GoRun<cr>", "Run" },
-      }
-    elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
-      keymap_c = {
-        name = "Code",
-        o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize Imports" },
-        r = { "<cmd>TypescriptRenameFile<cr>", "Rename File" },
-        i = { "<cmd>TypescriptAddMissingImports<cr>", "Import Missing" },
-        F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
-        u = { "<cmd>TypescriptRemoveUnused<cr>", "Remove Unused" },
-        R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
-        -- s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
-        -- t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
-      }
-    elseif ft == "java" then
-      keymap_c = {
-        name = "Code",
-        o = { "<cmd>lua require'jdtls'.organize_imports()<cr>", "Organize Imports" },
-        v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
-        c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
-        t = { "<cmd>lua require('jdtls').test_class()<cr>", "Test Class" },
-        n = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "Test Nearest Method" },
-      }
+    -- elseif ft == "lua" then
+    --   keymap_c = {
+    --     name = "Code",
+    --     r = { "<cmd>luafile %<cr>", "Run" },
+    --   }
+    -- elseif ft == "rust" then
+    --   keymap_c = {
+    --     name = "Code",
+    --     r = { "<cmd>execute 'Cargo run' | startinsert<cr>", "Run" },
+    --     D = { "<cmd>RustDebuggables<cr>", "Debuggables" },
+    --     h = { "<cmd>RustHoverActions<cr>", "Hover Actions" },
+    --     R = { "<cmd>RustRunnables<cr>", "Runnables" },
+    --   }
+    -- elseif ft == "go" then
+    --   keymap_c = {
+    --     name = "Code",
+    --     r = { "<cmd>GoRun<cr>", "Run" },
+    --   }
+    -- elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
+    --   keymap_c = {
+    --     name = "Code",
+    --     o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize Imports" },
+    --     r = { "<cmd>TypescriptRenameFile<cr>", "Rename File" },
+    --     i = { "<cmd>TypescriptAddMissingImports<cr>", "Import Missing" },
+    --     F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
+    --     u = { "<cmd>TypescriptRemoveUnused<cr>", "Remove Unused" },
+    --     R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+    --     -- s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
+    --     -- t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
+    --   }
+    -- elseif ft == "java" then
+    --   keymap_c = {
+    --     name = "Code",
+    --     o = { "<cmd>lua require'jdtls'.organize_imports()<cr>", "Organize Imports" },
+    --     v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
+    --     c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
+    --     t = { "<cmd>lua require('jdtls').test_class()<cr>", "Test Class" },
+    --     n = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "Test Nearest Method" },
+    --   }
       keymap_c_v = {
         name = "Code",
         v = { "<cmd>lua require('jdtls').extract_variable(true)<cr>", "Extract Variable" },
