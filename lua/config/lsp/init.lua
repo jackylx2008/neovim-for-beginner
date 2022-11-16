@@ -18,6 +18,7 @@ local servers = {
   --     },
   --   },
   -- },
+  clangd = {},
   html = {},
   jsonls = {
     settings = {

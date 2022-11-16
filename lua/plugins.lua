@@ -85,7 +85,7 @@ function M.setup()
     --     require("notifier").setup {}
     --   end,
     --   disable = true,
-     -- }
+    -- }
 
     -- Colorscheme
     use {
@@ -474,15 +474,15 @@ function M.setup()
     -- }
 
     -- Code documentation
-    -- use {
-    --   "danymat/neogen",
-    --   config = function()
-    --     require("config.neogen").setup()
-    --   end,
-    --   cmd = { "Neogen" },
-    --   module = "neogen",
-    --   disable = false,
-    -- }
+    use {
+      "danymat/neogen",
+      config = function()
+        require("config.neogen").setup()
+      end,
+      cmd = { "Neogen" },
+      module = "neogen",
+      disable = false,
+    }
     --
     -- use {
     --   "kkoomen/vim-doge",
@@ -1049,21 +1049,21 @@ function M.setup()
     --   end,
     -- }
     --
-    -- -- Harpoon
-    -- use {
-    --   "ThePrimeagen/harpoon",
-    --   module = {
-    --     "harpoon",
-    --     "harpoon.cmd-ui",
-    --     "harpoon.mark",
-    --     "harpoon.ui",
-    --     "harpoon.term",
-    --     "telescope._extensions.harpoon",
-    --   },
-    --   config = function()
-    --     require("config.harpoon").setup()
-    --   end,
-    -- }
+    -- Harpoon
+    use {
+      "ThePrimeagen/harpoon",
+      module = {
+        "harpoon",
+        "harpoon.cmd-ui",
+        "harpoon.mark",
+        "harpoon.ui",
+        "harpoon.term",
+        "telescope._extensions.harpoon",
+      },
+      config = function()
+        require("config.harpoon").setup()
+      end,
+    }
     --
     -- -- Refactoring
     -- use {
