@@ -3,21 +3,22 @@ local M = {}
 -- local util = require "lspconfig.util"
 
 local servers = {
-  gopls = {
-    settings = {
-      gopls = {
-        hints = {
-          assignVariableTypes = true,
-          compositeLiteralFields = true,
-          compositeLiteralTypes = true,
-          constantValues = true,
-          functionTypeParameters = true,
-          parameterNames = true,
-          rangeVariableTypes = true,
-        },
-      },
-    },
-  },
+  -- gopls = {
+  --   settings = {
+  --     gopls = {
+  --       hints = {
+  --         assignVariableTypes = true,
+  --         compositeLiteralFields = true,
+  --         compositeLiteralTypes = true,
+  --         constantValues = true,
+  --         functionTypeParameters = true,
+  --         parameterNames = true,
+  --         rangeVariableTypes = true,
+  --       },
+  --     },
+  --   },
+  -- },
+  clangd = {},
   html = {},
   jsonls = {
     settings = {
@@ -39,17 +40,17 @@ local servers = {
     },
   },
   -- pylsp = {}, -- Integration with rope for refactoring - https://github.com/python-rope/pylsp-rope
-  rust_analyzer = {
-    settings = {
-      ["rust-analyzer"] = {
-        cargo = { allFeatures = true },
-        checkOnSave = {
-          command = "cargo clippy",
-          extraArgs = { "--no-deps" },
-        },
-      },
-    },
-  },
+  -- rust_analyzer = {
+  --   settings = {
+  --     ["rust-analyzer"] = {
+  --       cargo = { allFeatures = true },
+  --       checkOnSave = {
+  --         command = "cargo clippy",
+  --         extraArgs = { "--no-deps" },
+  --       },
+  --     },
+  --   },
+  -- },
   sumneko_lua = {
     settings = {
       Lua = {
@@ -82,33 +83,33 @@ local servers = {
       },
     },
   },
-  tsserver = {
-    disable_formatting = true,
-    settings = {
-      javascript = {
-        inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayVariableTypeHints = true,
-        },
-      },
-      typescript = {
-        inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayVariableTypeHints = true,
-        },
-      },
-    },
-  },
+  -- tsserver = {
+  --   disable_formatting = true,
+  --   settings = {
+  --     javascript = {
+  --       inlayHints = {
+  --         includeInlayEnumMemberValueHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --       },
+  --     },
+  --     typescript = {
+  --       inlayHints = {
+  --         includeInlayEnumMemberValueHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --       },
+  --     },
+  --   },
+  -- },
   vimls = {},
   -- tailwindcss = {},
   yamlls = {
@@ -127,12 +128,12 @@ local servers = {
   jdtls = {},
   dockerls = {},
   -- graphql = {},
-  bashls = {},
+  -- bashls = {},
   taplo = {},
   -- omnisharp = {},
   -- kotlin_language_server = {},
   -- emmet_ls = {},
-  -- marksman = {},
+  marksman = {},
   -- angularls = {},
   -- sqls = {
   -- settings = {
@@ -248,7 +249,14 @@ function M.setup()
 
   -- Installer
   require("config.lsp.installer").setup(servers, opts)
+  local notify = vim.notify
+  vim.notify = function(msg, ...)
+    if msg:match "warning: multiple different client offset_encodings" then
+      return
+    end
 
+    notify(msg, ...)
+  end
   -- Inlay hints
   -- require("config.lsp.inlay-hints").setup()
 end

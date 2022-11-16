@@ -15,11 +15,11 @@ function M.setup()
           annotation_convention = "google_docstrings",
         },
       },
-      rust = {
-        template = {
-          annotation_convention = "rustdoc",
-        },
-      },
+      -- rust = {
+      --   template = {
+      --     annotation_convention = "rustdoc",
+      --   },
+      -- },
       javascript = {
         template = {
           annotation_convention = "jsdoc",

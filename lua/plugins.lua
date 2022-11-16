@@ -16,6 +16,9 @@ function M.setup()
         return require("packer.util").float { border = "rounded" }
       end,
     },
+    config = {
+      max_jobs = 10,
+    },
   }
 
   -- Check if packer.nvim is installed
@@ -64,104 +67,105 @@ function M.setup()
     }
 
     -- Notification
-    use {
-      "rcarriga/nvim-notify",
-      event = "BufReadPre",
-      config = function()
-        require("config.notify").setup()
-      end,
-      disable = false,
-    }
-    use {
-      "simrat39/desktop-notify.nvim",
-      config = function()
-        require("desktop-notify").override_vim_notify()
-      end,
-      disable = true,
-    }
-    use {
-      "vigoux/notifier.nvim",
-      config = function()
-        require("notifier").setup {}
-      end,
-      disable = true,
-    }
+    -- use {
+    --   "rcarriga/nvim-notify",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("config.notify").setup()
+    --   end,
+    --   disable = false,
+    -- }
+    -- use {
+    --   "simrat39/desktop-notify.nvim",
+    --   config = function()
+    --     require("desktop-notify").override_vim_notify()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "vigoux/notifier.nvim",
+    --   config = function()
+    --     require("notifier").setup {}
+    --   end,
+    --   disable = true,
+    -- }
 
     -- Colorscheme
     use {
       "catppuccin/nvim",
       as = "catppuccin",
-      config = function()
-        vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-        require("catppuccin").setup()
-        vim.cmd [[colorscheme catppuccin]]
-      end,
-      disable = true,
+      -- config = function()
+      --   vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+      --   require("catppuccin").setup()
+      --   vim.cmd [[colorscheme catppuccin]]
+      -- end,
+      -- disable = false,
     }
 
     use {
       "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd.colorscheme [[tokyonight]]
-      end,
-      disable = false,
+      -- config = function()
+      --   vim.cmd.colorscheme [[tokyonight]]
+      -- end,
+      -- disable = false,
     }
     use {
       "sainnhe/everforest",
-      config = function()
-        vim.g.everforest_better_performance = 1
-        vim.cmd.colorscheme [[everforest]]
-      end,
-      disable = true,
+      -- config = function()
+      --   vim.g.everforest_better_performance = 1
+      --   vim.cmd.colorscheme [[everforest]]
+      -- end,
+      -- disable = false,
     }
     use {
       "projekt0n/github-nvim-theme",
-      disable = true,
+      theme_style = "dark_default",
+      -- disable = false,
     }
     use {
       "sainnhe/gruvbox-material",
-      config = function()
-        vim.cmd "colorscheme gruvbox-material"
-      end,
-      disable = true,
+      -- config = function()
+      --   vim.cmd "colorscheme gruvbox-material"
+      -- end,
+      -- disable = false,
     }
     use {
       "arcticicestudio/nord-vim",
       config = function()
         vim.cmd "colorscheme nord"
       end,
-      disable = true,
+      -- disable = true,
     }
-    use {
-      "nvchad/nvim-colorizer.lua",
-      cmd = "ColorizerToggle",
-      config = function()
-        require("colorizer").setup()
-      end,
-    }
-    use {
-      "rktjmp/lush.nvim",
-      cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
-      disable = false,
-    }
-    use {
-      "max397574/colortils.nvim",
-      cmd = "Colortils",
-      config = function()
-        require("colortils").setup()
-      end,
-    }
-    use {
-      "ziontee113/color-picker.nvim",
-      cmd = { "PickColor", "PickColorInsert" },
-      config = function()
-        require "color-picker"
-      end,
-    }
-    use {
-      "lifepillar/vim-colortemplate",
-      disable = true,
-    }
+    -- use {
+    --   "nvchad/nvim-colorizer.lua",
+    --   cmd = "ColorizerToggle",
+    --   config = function()
+    --     require("colorizer").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "rktjmp/lush.nvim",
+    --   cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
+    --   disable = false,
+    -- }
+    -- use {
+    --   "max397574/colortils.nvim",
+    --   cmd = "Colortils",
+    --   config = function()
+    --     require("colortils").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "ziontee113/color-picker.nvim",
+    --   cmd = { "PickColor", "PickColorInsert" },
+    --   config = function()
+    --     require "color-picker"
+    --   end,
+    -- }
+    -- use {
+    --   "lifepillar/vim-colortemplate",
+    --   disable = true,
+    -- }
 
     -- Startup screen
     use {
@@ -172,11 +176,11 @@ function M.setup()
     }
 
     -- Doc
-    use { "nanotee/luv-vimdocs", event = "BufReadPre" }
-    use { "milisims/nvim-luaref", event = "BufReadPre" }
+    -- use { "nanotee/luv-vimdocs", event = "BufReadPre" }
+    -- use { "milisims/nvim-luaref", event = "BufReadPre" }
 
     -- Better Netrw
-    use { "tpope/vim-vinegar", event = "BufReadPre" }
+    -- use { "tpope/vim-vinegar", event = "BufReadPre" }
 
     -- Git
     use {
@@ -373,105 +377,105 @@ function M.setup()
     }
 
     -- IDE
-    use {
-      "max397574/better-escape.nvim",
-      event = { "InsertEnter" },
-      config = function()
-        require("better_escape").setup {
-          mapping = { "jk" },
-          timeout = vim.o.timeoutlen,
-          keys = "<ESC>",
-        }
-      end,
-    }
-    use {
-      "karb94/neoscroll.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("config.neoscroll").setup()
-      end,
-      disable = true,
-    }
-    use { "google/vim-searchindex", event = "BufReadPre" }
-    use { "tyru/open-browser.vim", event = "BufReadPre" }
-    use {
-      "bennypowers/nvim-regexplainer",
-      config = function()
-        require("regexplainer").setup()
-      end,
-      requires = {
-        "nvim-treesitter/nvim-treesitter",
-        "MunifTanjim/nui.nvim",
-      },
-      disable = true,
-    }
-    use {
-      "Djancyp/regex.nvim",
-      config = function()
-        require("regex-nvim").Setup()
-      end,
-      disable = true,
-    }
-    use { "mbbill/undotree", cmd = { "UndotreeToggle" } }
-    use {
-      "anuvyklack/windows.nvim",
-      requires = {
-        "anuvyklack/middleclass",
-        "anuvyklack/animation.nvim",
-      },
-      cmd = { "WindowsToggleAutowidth", "WindowsMaximize" },
-      config = function()
-        vim.o.winwidth = 10
-        vim.o.winminwidth = 10
-        vim.o.equalalways = false
-        require("windows").setup()
-      end,
-      disable = true,
-    }
-    use {
-      "beauwilliams/focus.nvim",
-      cmd = { "FocusToggle", "FocusMaxOrEqual" },
-      module = "focus",
-      config = function()
-        require("focus").setup { hybridnumber = true }
-      end,
-      disable = true,
-    }
-    use {
-      "smjonas/live-command.nvim",
-      event = { "BufReadPre" },
-      config = function()
-        require("live-command").setup {
-          commands = {
-            Norm = { cmd = "norm" },
-            Reg = {
-              cmd = "norm",
-              args = function(opts)
-                return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
-              end,
-              range = "",
-            },
-          },
-        }
-      end,
-      disable = true,
-    }
-    use {
-      "echasnovski/mini.nvim",
-      event = { "BufReadPre" },
-      config = function()
-        require("config.mini").setup()
-      end,
-    }
-    use { "MunifTanjim/nui.nvim", disable = true }
-    use {
-      "folke/noice.nvim",
-      event = { "VimEnter" },
-      config = function()
-        require("config.noice").setup()
-      end,
-      disable = true,
-    }
+    -- use {
+    --   "max397574/better-escape.nvim",
+    --   event = { "InsertEnter" },
+    --   config = function()
+    --     require("better_escape").setup {
+    --       mapping = { "jk" },
+    --       timeout = vim.o.timeoutlen,
+    --       keys = "<ESC>",
+    --     }
+    --   end,
+    -- }
+    -- use {
+    --   "karb94/neoscroll.nvim",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("config.neoscroll").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use { "google/vim-searchindex", event = "BufReadPre" }
+    -- use { "tyru/open-browser.vim", event = "BufReadPre" }
+    -- use {
+    --   "bennypowers/nvim-regexplainer",
+    --   config = function()
+    --     require("regexplainer").setup()
+    --   end,
+    --   requires = {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "MunifTanjim/nui.nvim",
+    --   },
+    --   disable = true,
+    -- }
+    -- use {
+    --   "Djancyp/regex.nvim",
+    --   config = function()
+    --     require("regex-nvim").Setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use { "mbbill/undotree", cmd = { "UndotreeToggle" } }
+    -- use {
+    --   "anuvyklack/windows.nvim",
+    --   requires = {
+    --     "anuvyklack/middleclass",
+    --     "anuvyklack/animation.nvim",
+    --   },
+    --   cmd = { "WindowsToggleAutowidth", "WindowsMaximize" },
+    --   config = function()
+    --     vim.o.winwidth = 10
+    --     vim.o.winminwidth = 10
+    --     vim.o.equalalways = false
+    --     require("windows").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "beauwilliams/focus.nvim",
+    --   cmd = { "FocusToggle", "FocusMaxOrEqual" },
+    --   module = "focus",
+    --   config = function()
+    --     require("focus").setup { hybridnumber = true }
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "smjonas/live-command.nvim",
+    --   event = { "BufReadPre" },
+    --   config = function()
+    --     require("live-command").setup {
+    --       commands = {
+    --         Norm = { cmd = "norm" },
+    --         Reg = {
+    --           cmd = "norm",
+    --           args = function(opts)
+    --             return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
+    --           end,
+    --           range = "",
+    --         },
+    --       },
+    --     }
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "echasnovski/mini.nvim",
+    --   event = { "BufReadPre" },
+    --   config = function()
+    --     require("config.mini").setup()
+    --   end,
+    -- }
+    -- use { "MunifTanjim/nui.nvim", disable = true }
+    -- use {
+    --   "folke/noice.nvim",
+    --   event = { "VimEnter" },
+    --   config = function()
+    --     require("config.noice").setup()
+    --   end,
+    --   disable = true,
+    -- }
 
     -- Code documentation
     use {
@@ -483,16 +487,16 @@ function M.setup()
       module = "neogen",
       disable = false,
     }
-
-    use {
-      "kkoomen/vim-doge",
-      run = ":call doge#install()",
-      config = function()
-        require("config.doge").setup()
-      end,
-      cmd = { "DogeGenerate", "DogeCreateDocStandard" },
-      disable = false,
-    }
+    --
+    -- use {
+    --   "kkoomen/vim-doge",
+    --   run = ":call doge#install()",
+    --   config = function()
+    --     require("config.doge").setup()
+    --   end,
+    --   cmd = { "DogeGenerate", "DogeCreateDocStandard" },
+    --   disable = false,
+    -- }
 
     -- Jumps
     use {
@@ -698,31 +702,31 @@ function M.setup()
     }
 
     -- User interface
-    use {
-      "stevearc/dressing.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("dressing").setup {
-          input = { relative = "editor" },
-          select = {
-            backend = { "telescope", "fzf", "builtin" },
-          },
-        }
-      end,
-      disable = false,
-    }
-    use {
-      "ray-x/guihua.lua",
-      run = "cd lua/fzy && make",
-      disable = true,
-    }
-    use {
-      "doums/suit.nvim",
-      config = function()
-        require("suit").setup {}
-      end,
-      disable = true,
-    }
+    -- use {
+    --   "stevearc/dressing.nvim",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("dressing").setup {
+    --       input = { relative = "editor" },
+    --       select = {
+    --         backend = { "telescope", "fzf", "builtin" },
+    --       },
+    --     }
+    --   end,
+    --   disable = false,
+    -- }
+    -- use {
+    --   "ray-x/guihua.lua",
+    --   run = "cd lua/fzy && make",
+    --   disable = true,
+    -- }
+    -- use {
+    --   "doums/suit.nvim",
+    --   config = function()
+    --     require("suit").setup {}
+    --   end,
+    --   disable = true,
+    -- }
 
     -- Completion
     use {
@@ -884,13 +888,13 @@ function M.setup()
     }
 
     -- lspsaga.nvim
-    use {
-      "glepnir/lspsaga.nvim",
-      cmd = { "Lspsaga" },
-      config = function()
-        require("config.lspsaga").setup()
-      end,
-    }
+    -- use {
+    --   "glepnir/lspsaga.nvim",
+    --   cmd = { "Lspsaga" },
+    --   config = function()
+    --     require("config.lspsaga").setup()
+    --   end,
+    -- }
 
     -- renamer.nvim
     use {
@@ -901,54 +905,54 @@ function M.setup()
       end,
     }
 
-    -- Rust
-    use {
-      "simrat39/rust-tools.nvim",
-      requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
-      opt = true,
-      module = "rust-tools",
-      ft = { "rust" },
-    }
-    use {
-      "saecki/crates.nvim",
-      event = { "BufRead Cargo.toml" },
-      requires = { { "nvim-lua/plenary.nvim" } },
-      config = function()
-        require("crates").setup {
-          null_ls = {
-            enabled = true,
-            name = "crates.nvim",
-          },
-        }
-      end,
-      disable = false,
-    }
-
-    -- Go
-    use {
-      "ray-x/go.nvim",
-      ft = { "go" },
-      config = function()
-        require("go").setup()
-      end,
-      disable = false,
-    }
-
-    -- Java
-    use { "mfussenegger/nvim-jdtls", ft = { "java" } }
-
-    -- Flutter
-    use {
-      "akinsho/flutter-tools.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-      config = function()
-        require("config.flutter").setup()
-      end,
-      disable = true,
-    }
-
-    -- Kotlin
-    use { "udalov/kotlin-vim", ft = { "kotlin" }, disable = true }
+    -- -- Rust
+    -- use {
+    --   "simrat39/rust-tools.nvim",
+    --   requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+    --   opt = true,
+    --   module = "rust-tools",
+    --   ft = { "rust" },
+    -- }
+    -- use {
+    --   "saecki/crates.nvim",
+    --   event = { "BufRead Cargo.toml" },
+    --   requires = { { "nvim-lua/plenary.nvim" } },
+    --   config = function()
+    --     require("crates").setup {
+    --       null_ls = {
+    --         enabled = true,
+    --         name = "crates.nvim",
+    --       },
+    --     }
+    --   end,
+    --   disable = false,
+    -- }
+    --
+    -- -- Go
+    -- use {
+    --   "ray-x/go.nvim",
+    --   ft = { "go" },
+    --   config = function()
+    --     require("go").setup()
+    --   end,
+    --   disable = false,
+    -- }
+    --
+    -- -- Java
+    -- use { "mfussenegger/nvim-jdtls", ft = { "java" } }
+    --
+    -- -- Flutter
+    -- use {
+    --   "akinsho/flutter-tools.nvim",
+    --   requires = { "nvim-lua/plenary.nvim" },
+    --   config = function()
+    --     require("config.flutter").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    --
+    -- -- Kotlin
+    -- use { "udalov/kotlin-vim", ft = { "kotlin" }, disable = true }
 
     -- Terminal
     use {
@@ -988,67 +992,67 @@ function M.setup()
     }
 
     -- vimspector
-    use {
-      "puremourning/vimspector",
-      cmd = { "VimspectorInstall", "VimspectorUpdate" },
-      fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
-      config = function()
-        require("config.vimspector").setup()
-      end,
-      disable = true,
-    }
-
-    -- Test
-    use {
-      "nvim-neotest/neotest",
-      requires = {
-        {
-          "vim-test/vim-test",
-          event = { "BufReadPre" },
-          config = function()
-            require("config.test").setup()
-          end,
-        },
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        { "nvim-neotest/neotest-vim-test", module = { "neotest-vim-test" } },
-        { "nvim-neotest/neotest-python", module = { "neotest-python" } },
-        { "nvim-neotest/neotest-plenary", module = { "neotest-plenary" } },
-        { "nvim-neotest/neotest-go", module = { "neotest-go" } },
-        { "haydenmeade/neotest-jest", module = { "neotest-jest" } },
-        { "rouge8/neotest-rust", module = { "neotest-rust" } },
-      },
-      module = { "neotest", "neotest.async" },
-      config = function()
-        require("config.neotest").setup()
-      end,
-      disable = false,
-    }
-    use { "diepm/vim-rest-console", ft = { "rest" }, disable = false }
-    use {
-      "NTBBloodbath/rest.nvim",
-      config = function()
-        require("rest-nvim").setup {}
-        vim.keymap.set("n", "<C-j>", "<Plug>RestNvim", { noremap = true, silent = true })
-      end,
-      disable = true,
-    }
-
-    -- AI completion
-    use { "github/copilot.vim", event = "InsertEnter", disable = true }
-
-    -- Legendary
-    use {
-      "mrjones2014/legendary.nvim",
-      opt = true,
-      keys = { [[<C-p>]] },
-      module = { "legendary" },
-      cmd = { "Legendary" },
-      config = function()
-        require("config.legendary").setup()
-      end,
-    }
-
+    -- use {
+    --   "puremourning/vimspector",
+    --   cmd = { "VimspectorInstall", "VimspectorUpdate" },
+    --   fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+    --   config = function()
+    --     require("config.vimspector").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    --
+    -- -- Test
+    -- use {
+    --   "nvim-neotest/neotest",
+    --   requires = {
+    --     {
+    --       "vim-test/vim-test",
+    --       event = { "BufReadPre" },
+    --       config = function()
+    --         require("config.test").setup()
+    --       end,
+    --     },
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-treesitter/nvim-treesitter",
+    --     { "nvim-neotest/neotest-vim-test", module = { "neotest-vim-test" } },
+    --     { "nvim-neotest/neotest-python", module = { "neotest-python" } },
+    --     { "nvim-neotest/neotest-plenary", module = { "neotest-plenary" } },
+    --     { "nvim-neotest/neotest-go", module = { "neotest-go" } },
+    --     { "haydenmeade/neotest-jest", module = { "neotest-jest" } },
+    --     { "rouge8/neotest-rust", module = { "neotest-rust" } },
+    --   },
+    --   module = { "neotest", "neotest.async" },
+    --   config = function()
+    --     require("config.neotest").setup()
+    --   end,
+    --   disable = false,
+    -- }
+    -- use { "diepm/vim-rest-console", ft = { "rest" }, disable = false }
+    -- use {
+    --   "NTBBloodbath/rest.nvim",
+    --   config = function()
+    --     require("rest-nvim").setup {}
+    --     vim.keymap.set("n", "<C-j>", "<Plug>RestNvim", { noremap = true, silent = true })
+    --   end,
+    --   disable = true,
+    -- }
+    --
+    -- -- AI completion
+    -- use { "github/copilot.vim", event = "InsertEnter", disable = true }
+    --
+    -- -- Legendary
+    -- use {
+    --   "mrjones2014/legendary.nvim",
+    --   opt = true,
+    --   keys = { [[<C-p>]] },
+    --   module = { "legendary" },
+    --   cmd = { "Legendary" },
+    --   config = function()
+    --     require("config.legendary").setup()
+    --   end,
+    -- }
+    --
     -- Harpoon
     use {
       "ThePrimeagen/harpoon",
@@ -1064,71 +1068,71 @@ function M.setup()
         require("config.harpoon").setup()
       end,
     }
-
-    -- Refactoring
-    use {
-      "ThePrimeagen/refactoring.nvim",
-      module = { "refactoring", "telescope" },
-      keys = { [[<leader>r]] },
-      config = function()
-        require("config.refactoring").setup()
-      end,
-    }
-    use { "python-rope/ropevim", run = "pip install ropevim", disable = true }
-    use {
-      "kevinhwang91/nvim-bqf",
-      ft = "qf",
-      disable = false,
-      config = function()
-        require("bqf").setup()
-      end,
-    }
-    use { "kevinhwang91/nvim-hlslens", event = "BufReadPre", disable = true }
-    use { "nvim-pack/nvim-spectre", module = "spectre", keys = { "<leader>s" } }
-    use {
-      "https://gitlab.com/yorickpeterse/nvim-pqf",
-      event = "BufReadPre",
-      config = function()
-        require("pqf").setup()
-      end,
-    }
-    use {
-      "andrewferrier/debugprint.nvim",
-      module = { "debugprint" },
-      keys = { "g?p", "g?P", "g?v", "g?V", "g?o", "g?O" },
-      cmd = { "DeleteDebugPrints" },
-      config = function()
-        require("debugprint").setup()
-      end,
-    }
-
-    -- Code folding
-    use {
-      "kevinhwang91/nvim-ufo",
-      opt = true,
-      keys = { "zc", "zo", "zR", "zm" },
-      wants = { "promise-async" },
-      requires = "kevinhwang91/promise-async",
-      config = function()
-        require("ufo").setup {
-          provider_selector = function(_, _)
-            return { "lsp", "treesitter", "indent" }
-          end,
-        }
-        vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-        vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-      end,
-      disable = true,
-    }
-
-    -- Performance
-    use { "dstein64/vim-startuptime", cmd = "StartupTime" }
-    use {
-      "nathom/filetype.nvim",
-      cond = function()
-        return vim.fn.has "nvim-0.8.0" == 0
-      end,
-    }
+    --
+    -- -- Refactoring
+    -- use {
+    --   "ThePrimeagen/refactoring.nvim",
+    --   module = { "refactoring", "telescope" },
+    --   keys = { [[<leader>r]] },
+    --   config = function()
+    --     require("config.refactoring").setup()
+    --   end,
+    -- }
+    -- use { "python-rope/ropevim", run = "pip install ropevim", disable = true }
+    -- use {
+    --   "kevinhwang91/nvim-bqf",
+    --   ft = "qf",
+    --   disable = false,
+    --   config = function()
+    --     require("bqf").setup()
+    --   end,
+    -- }
+    -- use { "kevinhwang91/nvim-hlslens", event = "BufReadPre", disable = true }
+    -- use { "nvim-pack/nvim-spectre", module = "spectre", keys = { "<leader>s" } }
+    -- use {
+    --   "https://gitlab.com/yorickpeterse/nvim-pqf",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("pqf").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "andrewferrier/debugprint.nvim",
+    --   module = { "debugprint" },
+    --   keys = { "g?p", "g?P", "g?v", "g?V", "g?o", "g?O" },
+    --   cmd = { "DeleteDebugPrints" },
+    --   config = function()
+    --     require("debugprint").setup()
+    --   end,
+    -- }
+    --
+    -- -- Code folding
+    -- use {
+    --   "kevinhwang91/nvim-ufo",
+    --   opt = true,
+    --   keys = { "zc", "zo", "zR", "zm" },
+    --   wants = { "promise-async" },
+    --   requires = "kevinhwang91/promise-async",
+    --   config = function()
+    --     require("ufo").setup {
+    --       provider_selector = function(_, _)
+    --         return { "lsp", "treesitter", "indent" }
+    --       end,
+    --     }
+    --     vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+    --     vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+    --   end,
+    --   disable = true,
+    -- }
+    --
+    -- -- Performance
+    -- use { "dstein64/vim-startuptime", cmd = "StartupTime" }
+    -- use {
+    --   "nathom/filetype.nvim",
+    --   cond = function()
+    --     return vim.fn.has "nvim-0.8.0" == 0
+    --   end,
+    -- }
 
     -- Web
     use {
@@ -1190,18 +1194,18 @@ function M.setup()
     }
 
     -- Plugin
-    use {
-      "tpope/vim-scriptease",
-      cmd = {
-        "Messages", --view messages in quickfix list
-        "Verbose", -- view verbose output in preview window.
-        "Time", -- measure how long it takes to run some stuff.
-      },
-      event = "BufReadPre",
-    }
-
-    -- Quickfix
-    use { "romainl/vim-qf", event = "BufReadPre", disable = true }
+    -- use {
+    --   "tpope/vim-scriptease",
+    --   cmd = {
+    --     "Messages", --view messages in quickfix list
+    --     "Verbose", -- view verbose output in preview window.
+    --     "Time", -- measure how long it takes to run some stuff.
+    --   },
+    --   event = "BufReadPre",
+    -- }
+    --
+    -- -- Quickfix
+    -- use { "romainl/vim-qf", event = "BufReadPre", disable = true }
 
     -- Todo
     use {
@@ -1264,103 +1268,103 @@ function M.setup()
       cmd = "Pantran",
     }
 
-    -- REPL
-    use {
-      "hkupty/iron.nvim",
-      config = function()
-        require("config.iron").setup()
-      end,
-      disable = true,
-    }
-
-    -- Task runner
-    use {
-      "stevearc/overseer.nvim",
-      opt = true,
-      module = { "neotest.consumers.overseer" },
-      cmd = {
-        "OverseerToggle",
-        "OverseerOpen",
-        "OverseerRun",
-        "OverseerBuild",
-        "OverseerClose",
-        "OverseerLoadBundle",
-        "OverseerSaveBundle",
-        "OverseerDeleteBundle",
-        "OverseerRunCmd",
-        "OverseerQuickAction",
-        "OverseerTaskAction",
-      },
-      config = function()
-        require("overseer").setup()
-      end,
-    }
-    use {
-      "michaelb/sniprun",
-      run = "bash ./install.sh",
-      cmd = { "SnipRun", "SnipInfo", "SnipReset", "SnipReplMemoryClean", "SnipClose", "SnipLive" },
-      module = { "sniprun", "sniprun.api" },
-    }
-
-    -- Database
-    use {
-      "tpope/vim-dadbod",
-      opt = true,
-      requires = {
-        "kristijanhusak/vim-dadbod-ui",
-        "kristijanhusak/vim-dadbod-completion",
-        --[[ "abenz1267/nvim-databasehelper", ]]
-      },
-      config = function()
-        require("config.dadbod").setup()
-      end,
-      cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
-    }
-    use {
-      "nanotee/sqls.nvim",
-      module = { "sqls" },
-      cmd = {
-        "SqlsExecuteQuery",
-        "SqlsExecuteQueryVertical",
-        "SqlsShowDatabases",
-        "SqlsShowSchemas",
-        "SqlsShowConnections",
-        "SqlsSwitchDatabase",
-        "SqlsSwitchConnection",
-      },
-    }
-    use {
-      "dinhhuy258/vim-database",
-      run = ":UpdateRemotePlugins",
-      cmd = { "VDToggleDatabase", "VDToggleQuery", "VimDatabaseListTablesFzf" },
-    }
-
-    -- Testing
-    use {
-      "linty-org/readline.nvim",
-      event = { "BufReadPre" },
-      config = function()
-        require("config.readline").setup()
-      end,
-    }
-    use {
-      "protex/better-digraphs.nvim",
-      config = function()
-        require("config.digraph").setup()
-      end,
-      keys = { "r<C-k><C-k>" },
-      disable = true,
-    }
-    use {
-      "ziontee113/icon-picker.nvim",
-      config = function()
-        require("icon-picker").setup {
-          disable_legacy_commands = true,
-        }
-      end,
-      cmd = { "IconPickerNormal", "IconPickerYank", "IconPickerInsert" },
-      disable = false,
-    }
+    -- -- REPL
+    -- use {
+    --   "hkupty/iron.nvim",
+    --   config = function()
+    --     require("config.iron").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    --
+    -- -- Task runner
+    -- use {
+    --   "stevearc/overseer.nvim",
+    --   opt = true,
+    --   module = { "neotest.consumers.overseer" },
+    --   cmd = {
+    --     "OverseerToggle",
+    --     "OverseerOpen",
+    --     "OverseerRun",
+    --     "OverseerBuild",
+    --     "OverseerClose",
+    --     "OverseerLoadBundle",
+    --     "OverseerSaveBundle",
+    --     "OverseerDeleteBundle",
+    --     "OverseerRunCmd",
+    --     "OverseerQuickAction",
+    --     "OverseerTaskAction",
+    --   },
+    --   config = function()
+    --     require("overseer").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "michaelb/sniprun",
+    --   run = "bash ./install.sh",
+    --   cmd = { "SnipRun", "SnipInfo", "SnipReset", "SnipReplMemoryClean", "SnipClose", "SnipLive" },
+    --   module = { "sniprun", "sniprun.api" },
+    -- }
+    --
+    -- -- Database
+    -- use {
+    --   "tpope/vim-dadbod",
+    --   opt = true,
+    --   requires = {
+    --     "kristijanhusak/vim-dadbod-ui",
+    --     "kristijanhusak/vim-dadbod-completion",
+    --     --[[ "abenz1267/nvim-databasehelper", ]]
+    --   },
+    --   config = function()
+    --     require("config.dadbod").setup()
+    --   end,
+    --   cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+    -- }
+    -- use {
+    --   "nanotee/sqls.nvim",
+    --   module = { "sqls" },
+    --   cmd = {
+    --     "SqlsExecuteQuery",
+    --     "SqlsExecuteQueryVertical",
+    --     "SqlsShowDatabases",
+    --     "SqlsShowSchemas",
+    --     "SqlsShowConnections",
+    --     "SqlsSwitchDatabase",
+    --     "SqlsSwitchConnection",
+    --   },
+    -- }
+    -- use {
+    --   "dinhhuy258/vim-database",
+    --   run = ":UpdateRemotePlugins",
+    --   cmd = { "VDToggleDatabase", "VDToggleQuery", "VimDatabaseListTablesFzf" },
+    -- }
+    --
+    -- -- Testing
+    -- use {
+    --   "linty-org/readline.nvim",
+    --   event = { "BufReadPre" },
+    --   config = function()
+    --     require("config.readline").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "protex/better-digraphs.nvim",
+    --   config = function()
+    --     require("config.digraph").setup()
+    --   end,
+    --   keys = { "r<C-k><C-k>" },
+    --   disable = true,
+    -- }
+    -- use {
+    --   "ziontee113/icon-picker.nvim",
+    --   config = function()
+    --     require("icon-picker").setup {
+    --       disable_legacy_commands = true,
+    --     }
+    --   end,
+    --   cmd = { "IconPickerNormal", "IconPickerYank", "IconPickerInsert" },
+    --   disable = false,
+    -- }
 
     -- use {
     --   "dgrbrady/nvim-docker",
@@ -1369,124 +1373,124 @@ function M.setup()
     --   module = { "nvim-docker" },
     --   disable = true,
     -- }
-
-    use {
-      "m-demare/attempt.nvim",
-      opt = true,
-      requires = "nvim-lua/plenary.nvim",
-      module = { "attempt" },
-      config = function()
-        require("config.attempt").setup()
-      end,
-      disable = false,
-    }
-    use {
-      "gbprod/substitute.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("config.substitute").setup()
-      end,
-      disable = true,
-    }
-    use {
-      "AckslD/nvim-trevJ.lua",
-      config = function()
-        require("trevj").setup()
-      end,
-      module = "trevj",
-      setup = function()
-        vim.keymap.set("n", ",j", function()
-          require("trevj").format_at_cursor()
-        end)
-      end,
-      disable = true,
-    }
-    use {
-      "narutoxy/dim.lua",
-      requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-      config = function()
-        require("dim").setup {
-          disable_lsp_decorations = true,
-        }
-      end,
-      disable = true,
-    }
-    use {
-      "linty-org/key-menu.nvim",
-      config = function()
-        require("config.keymenu").setup()
-      end,
-      event = "VimEnter",
-      disable = true,
-    }
-    use { "mg979/vim-visual-multi", event = "BufReadPre", disable = false }
-    use {
-      "anuvyklack/hydra.nvim",
-      config = function()
-        require("config.hydra").setup()
-      end,
-      requires = "anuvyklack/keymap-layer.nvim",
-      module = { "hydra" },
-      event = { "BufReadPre" },
-      disable = true,
-    }
-    use {
-      "Olical/conjure",
-      cmd = { "ConjureSchool" },
-      config = function()
-        vim.g["conjure#extract#tree_sitter#enabled"] = true
-      end,
-      disable = true,
-    }
-
-    -- Disabled
-    use {
-      "ziontee113/syntax-tree-surfer",
-      opt = true,
-      event = "BufReadPre",
-      module = { "syntax-tree-surfer" },
-      config = function()
-        require("config.syntaxtreesurfer").setup()
-      end,
-      disable = true,
-    }
-    use {
-      "ghillb/cybu.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("config.cybu").setup()
-      end,
-      disable = true,
-    }
-    use { "tversteeg/registers.nvim", disable = true }
-    use {
-      "TaDaa/vimade",
-      cmd = { "VimadeToggle", "VimadeEnable", "VimadeDisable" },
-      disable = true,
-      config = function()
-        vim.g.vimade.fadelevel = 0.7
-        vim.g.vimade.enablesigns = 1
-      end,
-    }
-    use {
-      "AckslD/nvim-gfold.lua",
-      config = function()
-        require("gfold").setup()
-      end,
-      disable = true,
-    }
-    use {
-      "epwalsh/obsidian.nvim",
-      disable = true,
-      config = function()
-        require("obsidian").setup {
-          dir = "~/my-notes",
-          completion = {
-            nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
-          },
-        }
-      end,
-    }
+    --
+    -- use {
+    --   "m-demare/attempt.nvim",
+    --   opt = true,
+    --   requires = "nvim-lua/plenary.nvim",
+    --   module = { "attempt" },
+    --   config = function()
+    --     require("config.attempt").setup()
+    --   end,
+    --   disable = false,
+    -- }
+    -- use {
+    --   "gbprod/substitute.nvim",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("config.substitute").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "AckslD/nvim-trevJ.lua",
+    --   config = function()
+    --     require("trevj").setup()
+    --   end,
+    --   module = "trevj",
+    --   setup = function()
+    --     vim.keymap.set("n", ",j", function()
+    --       require("trevj").format_at_cursor()
+    --     end)
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "narutoxy/dim.lua",
+    --   requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+    --   config = function()
+    --     require("dim").setup {
+    --       disable_lsp_decorations = true,
+    --     }
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "linty-org/key-menu.nvim",
+    --   config = function()
+    --     require("config.keymenu").setup()
+    --   end,
+    --   event = "VimEnter",
+    --   disable = true,
+    -- }
+    -- use { "mg979/vim-visual-multi", event = "BufReadPre", disable = false }
+    -- use {
+    --   "anuvyklack/hydra.nvim",
+    --   config = function()
+    --     require("config.hydra").setup()
+    --   end,
+    --   requires = "anuvyklack/keymap-layer.nvim",
+    --   module = { "hydra" },
+    --   event = { "BufReadPre" },
+    --   disable = true,
+    -- }
+    -- use {
+    --   "Olical/conjure",
+    --   cmd = { "ConjureSchool" },
+    --   config = function()
+    --     vim.g["conjure#extract#tree_sitter#enabled"] = true
+    --   end,
+    --   disable = true,
+    -- }
+    --
+    -- -- Disabled
+    -- use {
+    --   "ziontee113/syntax-tree-surfer",
+    --   opt = true,
+    --   event = "BufReadPre",
+    --   module = { "syntax-tree-surfer" },
+    --   config = function()
+    --     require("config.syntaxtreesurfer").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "ghillb/cybu.nvim",
+    --   event = "BufReadPre",
+    --   config = function()
+    --     require("config.cybu").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use { "tversteeg/registers.nvim", disable = true }
+    -- use {
+    --   "TaDaa/vimade",
+    --   cmd = { "VimadeToggle", "VimadeEnable", "VimadeDisable" },
+    --   disable = true,
+    --   config = function()
+    --     vim.g.vimade.fadelevel = 0.7
+    --     vim.g.vimade.enablesigns = 1
+    --   end,
+    -- }
+    -- use {
+    --   "AckslD/nvim-gfold.lua",
+    --   config = function()
+    --     require("gfold").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use {
+    --   "epwalsh/obsidian.nvim",
+    --   disable = true,
+    --   config = function()
+    --     require("obsidian").setup {
+    --       dir = "~/my-notes",
+    --       completion = {
+    --         nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+    --       },
+    --     }
+    --   end,
+    -- }
 
     -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
     -- https://github.com/rbong/vim-buffest
