@@ -16,6 +16,9 @@ function M.setup()
         return require("packer.util").float { border = "rounded" }
       end,
     },
+    config = {
+      max_jobs = 10,
+    },
   }
 
   -- Check if packer.nvim is installed
@@ -91,77 +94,78 @@ function M.setup()
     use {
       "catppuccin/nvim",
       as = "catppuccin",
-      config = function()
-        vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-        require("catppuccin").setup()
-        vim.cmd [[colorscheme catppuccin]]
-      end,
-      disable = true,
+      -- config = function()
+      --   vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+      --   require("catppuccin").setup()
+      --   vim.cmd [[colorscheme catppuccin]]
+      -- end,
+      -- disable = false,
     }
 
     use {
       "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd.colorscheme [[tokyonight]]
-      end,
-      disable = false,
+      -- config = function()
+      --   vim.cmd.colorscheme [[tokyonight]]
+      -- end,
+      -- disable = false,
     }
     use {
       "sainnhe/everforest",
-      config = function()
-        vim.g.everforest_better_performance = 1
-        vim.cmd.colorscheme [[everforest]]
-      end,
-      disable = true,
+      -- config = function()
+      --   vim.g.everforest_better_performance = 1
+      --   vim.cmd.colorscheme [[everforest]]
+      -- end,
+      -- disable = false,
     }
     use {
       "projekt0n/github-nvim-theme",
-      disable = true,
+      theme_style = "dark_default",
+      -- disable = false,
     }
     use {
       "sainnhe/gruvbox-material",
-      config = function()
-        vim.cmd "colorscheme gruvbox-material"
-      end,
-      disable = true,
+      -- config = function()
+      --   vim.cmd "colorscheme gruvbox-material"
+      -- end,
+      -- disable = false,
     }
     use {
       "arcticicestudio/nord-vim",
       config = function()
         vim.cmd "colorscheme nord"
       end,
-      disable = true,
+      -- disable = true,
     }
-    use {
-      "nvchad/nvim-colorizer.lua",
-      cmd = "ColorizerToggle",
-      config = function()
-        require("colorizer").setup()
-      end,
-    }
-    use {
-      "rktjmp/lush.nvim",
-      cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
-      disable = false,
-    }
-    use {
-      "max397574/colortils.nvim",
-      cmd = "Colortils",
-      config = function()
-        require("colortils").setup()
-      end,
-    }
-    use {
-      "ziontee113/color-picker.nvim",
-      cmd = { "PickColor", "PickColorInsert" },
-      config = function()
-        require "color-picker"
-      end,
-    }
-    use {
-      "lifepillar/vim-colortemplate",
-      disable = true,
-    }
+    -- use {
+    --   "nvchad/nvim-colorizer.lua",
+    --   cmd = "ColorizerToggle",
+    --   config = function()
+    --     require("colorizer").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "rktjmp/lush.nvim",
+    --   cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
+    --   disable = false,
+    -- }
+    -- use {
+    --   "max397574/colortils.nvim",
+    --   cmd = "Colortils",
+    --   config = function()
+    --     require("colortils").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "ziontee113/color-picker.nvim",
+    --   cmd = { "PickColor", "PickColorInsert" },
+    --   config = function()
+    --     require "color-picker"
+    --   end,
+    -- }
+    -- use {
+    --   "lifepillar/vim-colortemplate",
+    --   disable = true,
+    -- }
 
     -- Startup screen
     use {
