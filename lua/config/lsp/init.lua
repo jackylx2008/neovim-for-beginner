@@ -249,6 +249,9 @@ function M.setup()
 
   -- Installer
   require("config.lsp.installer").setup(servers, opts)
+
+  -- TODO: 解决cpp文件警告，nvim-notify如何解决未知
+
   local notify = vim.notify
   vim.notify = function(msg, ...)
     if msg:match "warning: multiple different client offset_encodings" then

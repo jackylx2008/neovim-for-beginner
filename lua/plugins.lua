@@ -66,6 +66,7 @@ function M.setup()
       disable = true,
     }
 
+    -- 弹窗通知，因为解决不了cpp文件的warning，暂时关闭
     -- Notification
     -- use {
     --   "rcarriga/nvim-notify",
@@ -131,11 +132,13 @@ function M.setup()
     }
     use {
       "arcticicestudio/nord-vim",
-      config = function()
-        vim.cmd "colorscheme nord"
-      end,
+      -- config = function()
+      --   vim.cmd "colorscheme nord"
+      -- end,
       -- disable = true,
     }
+
+    -- css html 文件内设置色彩
     -- use {
     --   "nvchad/nvim-colorizer.lua",
     --   cmd = "ColorizerToggle",
