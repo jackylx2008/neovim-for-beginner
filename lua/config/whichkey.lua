@@ -42,7 +42,7 @@ local function normal_keymap()
     h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
     m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
     o = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Old Files" },
-    g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live Grep" },
+    g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Text" },
     c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
     r = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
     w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
@@ -61,15 +61,15 @@ local function normal_keymap()
     ["q"] = { "<cmd>lua require('utils').quit()<CR>", "Quit" },
     -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
-    a = {
-      name = "Attempt",
-      n = { "<Cmd>lua require('attempt').new_select()<Cr>", "New Select" },
-      i = { "<Cmd>lua require('attempt').new_input_ext()<Cr>", "New Input Extension" },
-      r = { "<Cmd>lua require('attempt').run()<Cr>", "Run" },
-      d = { "<Cmd>lua require('attempt').delete_buf()<Cr>", "Delete Buffer" },
-      c = { "<Cmd>lua require('attempt').rename_buf()<Cr>", "Rename Buffer" },
-      s = { "<Cmd>Telescope attempt<Cr>", "Search" },
-    },
+    -- a = {
+    --   name = "Attempt",
+    --   n = { "<Cmd>lua require('attempt').new_select()<Cr>", "New Select" },
+    --   i = { "<Cmd>lua require('attempt').new_input_ext()<Cr>", "New Input Extension" },
+    --   r = { "<Cmd>lua require('attempt').run()<Cr>", "Run" },
+    --   d = { "<Cmd>lua require('attempt').delete_buf()<Cr>", "Delete Buffer" },
+    --   c = { "<Cmd>lua require('attempt').rename_buf()<Cr>", "Rename Buffer" },
+    --   s = { "<Cmd>Telescope attempt<Cr>", "Search" },
+    -- },
 
     b = {
       name = "Buffer",
@@ -83,8 +83,8 @@ local function normal_keymap()
 
     c = {
       name = "Code",
-      g = { "<cmd>Neogen func<Cr>", "Func Doc" },
-      G = { "<cmd>Neogen class<Cr>", "Class Doc" },
+      g = { "<cmd>Neogen func<Cr>", "Comnit Func Doc" },
+      G = { "<cmd>Neogen class<Cr>", "Commit Class Doc" },
       d = { "<cmd>DogeGenerate<Cr>", "Generate Doc" },
       o = { "<cmd>Telescope aerial<Cr>", "Outline" },
       T = { "<cmd>TodoTelescope<Cr>", "TODO" },
@@ -109,13 +109,13 @@ local function normal_keymap()
     },
 
     -- Database
-    D = {
-      name = "Database",
-      u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
-      f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
-      r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
-      q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
-    },
+    -- D = {
+    --   name = "Database",
+    --   u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+    --   f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+    --   r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+    --   q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+    -- },
 
     f = keymap_f,
     p = keymap_p,
@@ -154,66 +154,65 @@ local function normal_keymap()
     -- keymap_c.a = { "<cmd>OverseerQuickAction<cr>", "Overseer Quick Action" }
     -- keymap_c.A = { "<cmd>OverseerTaskAction<cr>", "Overseer Task Action" }
 
-    o = {
-      name = "Overseer",
-      C = { "<cmd>OverseerClose<cr>", "OverseerClose" },
-      a = { "<cmd>OverseerTaskAction<cr>", "OverseerTaskAction" },
-      b = { "<cmd>OverseerBuild<cr>", "OverseerBuild" },
-      c = { "<cmd>OverseerRunCmd<cr>", "OverseerRunCmd" },
-      d = { "<cmd>OverseerDeleteBundle<cr>", "OverseerDeleteBundle" },
-      l = { "<cmd>OverseerLoadBundle<cr>", "OverseerLoadBundle" },
-      o = { "<cmd>OverseerOpen!<cr>", "OverseerOpen" },
-      q = { "<cmd>OverseerQuickAction<cr>", "OverseerQuickAction" },
-      r = { "<cmd>OverseerRun<cr>", "OverseerRun" },
-      s = { "<cmd>OverseerSaveBundle<cr>", "OverseerSaveBundle" },
-      t = { "<cmd>OverseerToggle!<cr>", "OverseerToggle" },
-    },
+    -- o = {
+    --   name = "Overseer",
+    --   C = { "<cmd>OverseerClose<cr>", "OverseerClose" },
+    --   a = { "<cmd>OverseerTaskAction<cr>", "OverseerTaskAction" },
+    --   b = { "<cmd>OverseerBuild<cr>", "OverseerBuild" },
+    --   c = { "<cmd>OverseerRunCmd<cr>", "OverseerRunCmd" },
+    --   d = { "<cmd>OverseerDeleteBundle<cr>", "OverseerDeleteBundle" },
+    --   l = { "<cmd>OverseerLoadBundle<cr>", "OverseerLoadBundle" },
+    --   o = { "<cmd>OverseerOpen!<cr>", "OverseerOpen" },
+    --   q = { "<cmd>OverseerQuickAction<cr>", "OverseerQuickAction" },
+    --   r = { "<cmd>OverseerRun<cr>", "OverseerRun" },
+    --   s = { "<cmd>OverseerSaveBundle<cr>", "OverseerSaveBundle" },
+    --   t = { "<cmd>OverseerToggle!<cr>", "OverseerToggle" },
+    -- },
 
-    t = {
-      name = "Test",
-      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
-      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
-      F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
-      l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
-      L = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug Last" },
-      n = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
-      N = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
-      o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
-      S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-      s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
-      p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
-      v = { "<cmd>TestVisit<cr>", "Visit" },
-      x = { "<cmd>TestSuite<cr>", "Suite" },
-      t = {
-        name = "Test",
-        l = { "<cmd>TestLast<cr>", "Run Last" },
-        n = { "<cmd>TestNearest<cr>", "Run Nearest" },
-      },
-    },
+    -- t = {
+    --   name = "Test",
+    --   a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+    --   f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
+    --   F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
+    --   l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
+    --   L = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug Last" },
+    --   n = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
+    --   N = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
+    --   o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
+    --   S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+    --   s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
+    --   p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
+    --   v = { "<cmd>TestVisit<cr>", "Visit" },
+    --   x = { "<cmd>TestSuite<cr>", "Suite" },
+    --   t = {
+    --     name = "Test",
+    --     l = { "<cmd>TestLast<cr>", "Run Last" },
+    --     n = { "<cmd>TestNearest<cr>", "Run Nearest" },
+    --   },
+    -- },
 
-    r = {
-      name = "Refactor",
-      i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
-      b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
-      B = { [[<cmd>lua require('refactoring').refactor('Exract Block To File')<cr>]], "Extract Block to File" },
-      P = {
-        [[<cmd>lua require('refactoring').debug.printf({below = false})<cr>]],
-        "Debug Print",
-      },
-      p = {
-        [[<cmd>lua require('refactoring').debug.print_var({normal = true})<cr>]],
-        "Debug Print Variable",
-      },
-      c = { [[<cmd>lua require('refactoring').debug.cleanup({})<cr>]], "Debug Cleanup" },
-    },
+    -- r = {
+    --   name = "Refactor",
+    --   i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
+    --   b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
+    --   B = { [[<cmd>lua require('refactoring').refactor('Exract Block To File')<cr>]], "Extract Block to File" },
+    --   P = {
+    --     [[<cmd>lua require('refactoring').debug.printf({below = false})<cr>]],
+    --     "Debug Print",
+    --   },
+    --   p = {
+    --     [[<cmd>lua require('refactoring').debug.print_var({normal = true})<cr>]],
+    --     "Debug Print Variable",
+    --   },
+    --   c = { [[<cmd>lua require('refactoring').debug.cleanup({})<cr>]], "Debug Cleanup" },
 
-    s = {
-      name = "Search",
-      o = { [[ <Esc><Cmd>lua require('spectre').open()<CR>]], "Open" },
-      c = { [[ <Esc><Cmd>lua require('utils.cht').cht_input()<CR>]], "cht.sh" },
-      s = { [[ <Esc><Cmd>lua require('utils.term').so()<CR>]], "Stack Overflow" },
-      w = { [[ <Esc><Cmd>lua require("telescope").extensions.arecibo.websearch()<CR>]], "Web" },
-    },
+    -- s = {
+    --   name = "Search",
+    --   o = { [[ <Esc><Cmd>lua require('spectre').open()<CR>]], "Open" },
+    --   c = { [[ <Esc><Cmd>lua require('utils.cht').cht_input()<CR>]], "cht.sh" },
+    --   s = { [[ <Esc><Cmd>lua require('utils.term').so()<CR>]], "Stack Overflow" },
+    --   w = { [[ <Esc><Cmd>lua require("telescope").extensions.arecibo.websearch()<CR>]], "Web" },
+    -- },
 
     v = {
       name = "Vimspector",

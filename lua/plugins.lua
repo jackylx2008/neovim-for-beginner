@@ -232,59 +232,60 @@ function M.setup()
     --   end,
     --   disable = false,
     -- }
-    use {
-      "akinsho/git-conflict.nvim",
-      cmd = {
-        "GitConflictChooseTheirs",
-        "GitConflictChooseOurs",
-        "GitConflictChooseBoth",
-        "GitConflictChooseNone",
-        "GitConflictNextConflict",
-        "GitConflictPrevConflict",
-        "GitConflictListQf",
-      },
-      config = function()
-        require("git-conflict").setup()
-      end,
-    }
-    use {
-      "ldelossa/gh.nvim",
-      opt = true,
-      requires = { { "ldelossa/litee.nvim" } },
-      event = "BufReadPre",
-      cmd = { "GHOpenPR" },
-      config = function()
-        require("litee.lib").setup()
-        require("litee.gh").setup()
-      end,
-      disable = true,
-    }
-    use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
-    use {
-      "tanvirtin/vgit.nvim",
-      config = function()
-        require("vgit").setup()
-      end,
-      cmd = { "VGit" },
-    }
-    use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
-    use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
-    use {
-      "mattn/vim-gist",
-      opt = true,
-      requires = { "mattn/webapi-vim" },
-      cmd = { "Gist" },
-      config = function()
-        vim.g.gist_open_browser_after_post = 1
-      end,
-    }
+    -- A plugin to visualise and resolve conflicts in neovim
+    -- use {
+    --   "akinsho/git-conflict.nvim",
+    --   cmd = {
+    --     "GitConflictChooseTheirs",
+    --     "GitConflictChooseOurs",
+    --     "GitConflictChooseBoth",
+    --     "GitConflictChooseNone",
+    --     "GitConflictNextConflict",
+    --     "GitConflictPrevConflict",
+    --     "GitConflictListQf",
+    --   },
+    --   config = function()
+    --     require("git-conflict").setup()
+    --   end,
+    -- }
+    -- 在 GitHub 平台上进行交互式代码审查的插件
+    -- use {
+    --   "ldelossa/gh.nvim",
+    --   opt = true,
+    --   requires = { { "ldelossa/litee.nvim" } },
+    --   event = "BufReadPre",
+    --   cmd = { "GHOpenPR" },
+    --   config = function()
+    --     require("litee.lib").setup()
+    --     require("litee.gh").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } } -- 显示本行Git commit
+    -- use { -- Visual Git Plugin for Neovim to enhance your git experience
+    --   "tanvirtin/vgit.nvim",
+    --   config = function()
+    --     require("vgit").setup()
+    --   end,
+    --   cmd = { "VGit" },
+    -- }
+    -- use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
+    -- use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
+    -- use {
+    --   "mattn/vim-gist",
+    --   opt = true,
+    --   requires = { "mattn/webapi-vim" },
+    --   cmd = { "Gist" },
+    --   config = function()
+    --     vim.g.gist_open_browser_after_post = 1
+    --   end,
+    -- }
 
     -- WhichKey
     use {
       "folke/which-key.nvim",
       event = "VimEnter",
       module = { "which-key" },
-      -- keys = { [[<leader>]] },
       config = function()
         require("config.whichkey").setup()
       end,
@@ -473,7 +474,7 @@ function M.setup()
     --   disable = true,
     -- }
 
-    -- Code documentation
+    -- Commit:Code documentation
     use {
       "danymat/neogen",
       config = function()
@@ -483,16 +484,15 @@ function M.setup()
       module = "neogen",
       disable = false,
     }
-    --
-    -- use {
-    --   "kkoomen/vim-doge",
-    --   run = ":call doge#install()",
-    --   config = function()
-    --     require("config.doge").setup()
-    --   end,
-    --   cmd = { "DogeGenerate", "DogeCreateDocStandard" },
-    --   disable = false,
-    -- }
+    use {
+      "kkoomen/vim-doge",
+      run = ":call doge#install()",
+      config = function()
+        require("config.doge").setup()
+      end,
+      cmd = { "DogeGenerate", "DogeCreateDocStandard" },
+      disable = false,
+    }
 
     -- Jumps
     use {
