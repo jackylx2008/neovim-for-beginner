@@ -102,7 +102,6 @@ function M.setup()
       -- end,
       -- disable = false,
     }
-
     use {
       "folke/tokyonight.nvim",
       -- config = function()
@@ -178,13 +177,6 @@ function M.setup()
       end,
     }
 
-    -- Doc
-    -- use { "nanotee/luv-vimdocs", event = "BufReadPre" }
-    -- use { "milisims/nvim-luaref", event = "BufReadPre" }
-
-    -- Better Netrw
-    -- use { "tpope/vim-vinegar", event = "BufReadPre" }
-
     -- Git
     use {
       "TimUntersberger/neogit",
@@ -194,7 +186,6 @@ function M.setup()
         require("config.neogit").setup()
       end,
     }
-    use { "jreybert/vimagit", cmd = "Magit", disable = true }
     use {
       "lewis6991/gitsigns.nvim",
       event = "BufReadPre",
@@ -218,27 +209,29 @@ function M.setup()
       cmd = { "Flog", "Flogsplit", "Floggit" },
       wants = { "vim-fugitive" },
     }
-    use {
-      "ruifm/gitlinker.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      module = "gitlinker",
-      config = function()
-        require("gitlinker").setup { mappings = nil }
-      end,
-    }
-    use {
-      "pwntester/octo.nvim",
-      cmd = "Octo",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
-        "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-        require("octo").setup()
-      end,
-      disable = false,
-    }
+    -- :GBrowse 用于为多个 git web 前端主机生成可共享文件永久链接，并用浏览器打开
+    -- use {
+    --   "ruifm/gitlinker.nvim",
+    --   requires = "nvim-lua/plenary.nvim",
+    --   module = "gitlinker",
+    --   config = function()
+    --     require("gitlinker").setup { mappings = nil }
+    --   end,
+    -- }
+    -- Edit and review GitHub issues and pull requests from the comfort of your favorite editor
+    -- use {
+    --   "pwntester/octo.nvim",
+    --   cmd = "Octo",
+    --   requires = {
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope.nvim",
+    --     "nvim-tree/nvim-web-devicons",
+    --   },
+    --   config = function()
+    --     require("octo").setup()
+    --   end,
+    --   disable = false,
+    -- }
     use {
       "akinsho/git-conflict.nvim",
       cmd = {
