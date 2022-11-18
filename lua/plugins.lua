@@ -57,15 +57,6 @@ function M.setup()
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
-    -- literate programming
-    use {
-      "~/workspace/alpha2phi/lp.nvim",
-      -- config = function()
-      --   require("lp").setup()
-      -- end,
-      disable = true,
-    }
-
     -- 弹窗通知，因为解决不了cpp文件的warning，暂时关闭
     -- Notification
     -- use {
@@ -92,50 +83,12 @@ function M.setup()
     -- }
 
     -- Colorscheme
-    use {
-      "catppuccin/nvim",
-      as = "catppuccin",
-      -- config = function()
-      --   vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-      --   require("catppuccin").setup()
-      --   vim.cmd [[colorscheme catppuccin]]
-      -- end,
-      -- disable = false,
-    }
-    use {
-      "folke/tokyonight.nvim",
-      -- config = function()
-      --   vim.cmd.colorscheme [[tokyonight]]
-      -- end,
-      -- disable = false,
-    }
-    use {
-      "sainnhe/everforest",
-      -- config = function()
-      --   vim.g.everforest_better_performance = 1
-      --   vim.cmd.colorscheme [[everforest]]
-      -- end,
-      -- disable = false,
-    }
-    use {
-      "projekt0n/github-nvim-theme",
-      theme_style = "dark_default",
-      -- disable = false,
-    }
-    use {
-      "sainnhe/gruvbox-material",
-      -- config = function()
-      --   vim.cmd "colorscheme gruvbox-material"
-      -- end,
-      -- disable = false,
-    }
-    use {
-      "arcticicestudio/nord-vim",
-      -- config = function()
-      --   vim.cmd "colorscheme nord"
-      -- end,
-      -- disable = true,
-    }
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "folke/tokyonight.nvim" }
+    use { "sainnhe/everforest" }
+    use { "projekt0n/github-nvim-theme", theme_style = "dark_default" }
+    use { "sainnhe/gruvbox-material" }
+    use { "arcticicestudio/nord-vim" }
 
     -- css html 文件内设置色彩
     -- use {
@@ -319,7 +272,6 @@ function M.setup()
       end,
       disable = false,
     }
-    use { "tpope/vim-commentary", keys = { "gc", "gcc", "gbc" }, disable = true }
 
     -- Better surround
     use {
@@ -332,16 +284,16 @@ function M.setup()
       end,
     }
 
-    -- Jumps
+    -- Jumps and Motions
     use {
       "phaazon/hop.nvim",
-      cmd = "HopWord",
-      module = "hop",
-      keys = { "f", "F", "t", "T" },
+      -- cmd = "HopWord",
+      -- module = "hop",
+      -- keys = { "f", "F", "t", "T" },
       config = function()
         require("config.hop").setup()
       end,
-      -- disable = true,
+      -- disable = false,
     }
     use {
       "ggandor/leap.nvim",
@@ -362,30 +314,16 @@ function M.setup()
         }
       end,
     }
-    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
-
-    -- Motions
-    use { "andymass/vim-matchup", event = "CursorMoved" }
-    use { "wellle/targets.vim", event = "CursorMoved", disable = false }
     use {
-      "unblevable/quick-scope",
-      keys = { "F", "f", "T", "t" },
-      -- config = function()
-      --   vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
-      -- end,
+      "AndrewRadev/splitjoin.vim",
+      keys = { "gS", "gJ" },
       disable = false,
     }
-    use {
-      "jinh0/eyeliner.nvim",
-      keys = { "F", "f", "T", "t" },
-      config = function()
-        require("eyeliner").setup {
-          highlight_on_key = true,
-        }
-      end,
-      disable = true,
-    }
-    use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
+
+    -- Motions
+    -- use { "andymass/vim-matchup", event = "CursorMoved" }
+    -- use { "wellle/targets.vim", event = "CursorMoved", disable = false }
+    -- use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
     -- Buffer
     use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
