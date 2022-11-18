@@ -209,6 +209,7 @@ function M.setup()
       cmd = { "Flog", "Flogsplit", "Floggit" },
       wants = { "vim-fugitive" },
     }
+
     -- :GBrowse 用于为多个 git web 前端主机生成可共享文件永久链接，并用浏览器打开
     -- use {
     --   "ruifm/gitlinker.nvim",
@@ -232,52 +233,52 @@ function M.setup()
     --   end,
     --   disable = false,
     -- }
-    use {
-      "akinsho/git-conflict.nvim",
-      cmd = {
-        "GitConflictChooseTheirs",
-        "GitConflictChooseOurs",
-        "GitConflictChooseBoth",
-        "GitConflictChooseNone",
-        "GitConflictNextConflict",
-        "GitConflictPrevConflict",
-        "GitConflictListQf",
-      },
-      config = function()
-        require("git-conflict").setup()
-      end,
-    }
-    use {
-      "ldelossa/gh.nvim",
-      opt = true,
-      requires = { { "ldelossa/litee.nvim" } },
-      event = "BufReadPre",
-      cmd = { "GHOpenPR" },
-      config = function()
-        require("litee.lib").setup()
-        require("litee.gh").setup()
-      end,
-      disable = true,
-    }
-    use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
-    use {
-      "tanvirtin/vgit.nvim",
-      config = function()
-        require("vgit").setup()
-      end,
-      cmd = { "VGit" },
-    }
-    use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
-    use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
-    use {
-      "mattn/vim-gist",
-      opt = true,
-      requires = { "mattn/webapi-vim" },
-      cmd = { "Gist" },
-      config = function()
-        vim.g.gist_open_browser_after_post = 1
-      end,
-    }
+    -- use {
+    --   "akinsho/git-conflict.nvim",
+    --   cmd = {
+    --     "GitConflictChooseTheirs",
+    --     "GitConflictChooseOurs",
+    --     "GitConflictChooseBoth",
+    --     "GitConflictChooseNone",
+    --     "GitConflictNextConflict",
+    --     "GitConflictPrevConflict",
+    --     "GitConflictListQf",
+    --   },
+    --   config = function()
+    --     require("git-conflict").setup()
+    --   end,
+    -- }
+    -- use {
+    --   "ldelossa/gh.nvim",
+    --   opt = true,
+    --   requires = { { "ldelossa/litee.nvim" } },
+    --   event = "BufReadPre",
+    --   cmd = { "GHOpenPR" },
+    --   config = function()
+    --     require("litee.lib").setup()
+    --     require("litee.gh").setup()
+    --   end,
+    --   disable = true,
+    -- }
+    -- use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
+    -- use {
+    --   "tanvirtin/vgit.nvim",
+    --   config = function()
+    --     require("vgit").setup()
+    --   end,
+    --   cmd = { "VGit" },
+    -- }
+    -- use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
+    -- use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
+    -- use {
+    --   "mattn/vim-gist",
+    --   opt = true,
+    --   requires = { "mattn/webapi-vim" },
+    --   cmd = { "Gist" },
+    --   config = function()
+    --     vim.g.gist_open_browser_after_post = 1
+    --   end,
+    -- }
 
     -- WhichKey
     use {
@@ -321,15 +322,47 @@ function M.setup()
     use { "tpope/vim-commentary", keys = { "gc", "gcc", "gbc" }, disable = true }
 
     -- Better surround
-    use { "tpope/vim-surround", event = "BufReadPre" }
     use {
-      "Matt-A-Bennett/vim-surround-funk",
-      event = "BufReadPre",
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
       config = function()
-        require("config.surroundfunk").setup()
+        require("nvim-surround").setup {
+          -- Configuration here, or leave empty to use defaults
+        }
       end,
-      disable = true,
     }
+
+    -- Jumps
+    use {
+      "phaazon/hop.nvim",
+      cmd = "HopWord",
+      module = "hop",
+      keys = { "f", "F", "t", "T" },
+      config = function()
+        require("config.hop").setup()
+      end,
+      -- disable = true,
+    }
+    use {
+      "ggandor/leap.nvim",
+      keys = { "s", "S" },
+      config = function()
+        local leap = require "leap"
+        leap.add_default_mappings()
+      end,
+      disable = false,
+    }
+    use {
+      "abecodes/tabout.nvim",
+      after = { "nvim-cmp" },
+      config = function()
+        require("tabout").setup {
+          completion = false,
+          ignore_beginning = true,
+        }
+      end,
+    }
+    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
 
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
@@ -492,45 +525,6 @@ function M.setup()
     --   end,
     --   cmd = { "DogeGenerate", "DogeCreateDocStandard" },
     --   disable = false,
-    -- }
-
-    -- Jumps
-    use {
-      "phaazon/hop.nvim",
-      cmd = "HopWord",
-      module = "hop",
-      keys = { "f", "F", "t", "T" },
-      config = function()
-        require("config.hop").setup()
-      end,
-      disable = true,
-    }
-    use {
-      "ggandor/leap.nvim",
-      keys = { "s", "S" },
-      config = function()
-        local leap = require "leap"
-        leap.add_default_mappings()
-      end,
-      disable = false,
-    }
-    use {
-      "abecodes/tabout.nvim",
-      after = { "nvim-cmp" },
-      config = function()
-        require("tabout").setup {
-          completion = false,
-          ignore_beginning = true,
-        }
-      end,
-    }
-    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
-    -- use {
-    --   "ggandor/lightspeed.nvim",
-    --   keys = { "s", "S", "f", "F", "t", "T" },
-    --   config = function()
-    --     require("lightspeed").setup {}
-    --   end,
     -- }
 
     -- Markdown
