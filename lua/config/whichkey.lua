@@ -57,6 +57,7 @@ local function normal_keymap()
   }
 
   local keymap = {
+    ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>lua require('utils').quit()<CR>", "Quit" },
     -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
@@ -334,6 +335,7 @@ end
 
 local function visual_keymap()
   local keymap = {
+    ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
     g = {
       name = "Git",
       y = {
