@@ -1055,12 +1055,12 @@ function M.setup()
     --
     -- -- Performance
     -- use { "dstein64/vim-startuptime", cmd = "StartupTime" }
-    -- use {
-    --   "nathom/filetype.nvim",
-    --   cond = function()
-    --     return vim.fn.has "nvim-0.8.0" == 0
-    --   end,
-    -- }
+    use {
+      "nathom/filetype.nvim",
+      cond = function()
+        return vim.fn.has "nvim-0.8.0" == 0
+      end,
+    }
 
     -- Web
     use {
