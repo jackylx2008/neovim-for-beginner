@@ -679,16 +679,25 @@ function M.setup()
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
+        -- {
+        --   "L3MON4D3/LuaSnip",
+        --   config = function()
+        --     require("config.snip").setup()
+        --   end,
+        --   module = { "luasnip" },
+        -- },
+        -- "rafamadriz/friendly-snippets",
+        -- "honza/vim-snippets",
+        -- { "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
         {
           "L3MON4D3/LuaSnip",
+          wants = { "friendly-snippets", "vim-snippets" },
           config = function()
             require("config.snip").setup()
           end,
-          module = { "luasnip" },
         },
         "rafamadriz/friendly-snippets",
         "honza/vim-snippets",
-        { "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
       },
     }
 
