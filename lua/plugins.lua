@@ -266,11 +266,11 @@ function M.setup()
     -- Better Comment
     use {
       "numToStr/Comment.nvim",
-      keys = { "gc", "gcc", "gbc" },
+      -- keys = { "gc", "gcc", "gbc" },
       config = function()
         require("config.comment").setup()
       end,
-      disable = false,
+      -- disable = false,
     }
 
     -- Better surround
