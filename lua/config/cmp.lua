@@ -7,8 +7,8 @@ local compare = require "cmp.config.compare"
 local lspkind = require "lspkind"
 
 local source_mapping = {
-  nvim_lsp = "[Lsp]",
   luasnip = "[Snip]",
+  nvim_lsp = "[Lsp]",
   buffer = "[Buffer]",
   nvim_lua = "[Lua]",
   treesitter = "[Tree]",
