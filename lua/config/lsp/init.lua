@@ -51,7 +51,13 @@ local servers = {
   --     },
   --   },
   -- },
-  sumneko_lua = {
+  -- lua_ls = {
+  --   Lua = {
+  --     workspace = { checkThirdParty = false },
+  --     telemetry = { enable = false },
+  --   },
+  -- },
+  lua_ls = {
     settings = {
       Lua = {
         runtime = {
@@ -66,6 +72,7 @@ local servers = {
           -- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         workspace = {
+          checkThirdParty = false,
           -- Make the server aware of Neovim runtime files
           library = {
             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
