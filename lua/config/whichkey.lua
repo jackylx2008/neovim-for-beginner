@@ -106,9 +106,9 @@ local function normal_keymap()
       -- F = "Select Outer Class",
     },
 
-    d = {
-      name = "Debug",
-    },
+    -- d = {
+    --   name = "Debug",
+    -- },
 
     -- Database
     -- D = {
@@ -129,10 +129,10 @@ local function normal_keymap()
       c = { "<Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<Cr>", "Command Menu" },
     },
 
-    ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "File 1" },
-    ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "File 2" },
+    -- ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "File 1" },
+    -- ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "File 2" },
     ["3"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(1)<Cr>", "Terminal 1" },
-    ["4"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(2)<Cr>", "Terminal 2" },
+    -- ["4"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(2)<Cr>", "Terminal 2" },
     -- ["5"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,1)<Cr>", "Command 1" },
     -- ["6"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,2)<Cr>", "Command 2" },
 
@@ -247,38 +247,37 @@ local function normal_keymap()
     z = {
       name = "System",
       -- c = { "<cmd>PackerCompile<cr>", "Compile" },
-      c = { "<cmd>Telescope neoclip<cr>", "Clipboard" },
+      -- c = { "<cmd>Telescope neoclip<cr>", "Clipboard" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
-      D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
-      m = { "<cmd>lua require('telescope').extensions.macroscope.default()<cr>", "Macros" },
+      -- m = { "<cmd>lua require('telescope').extensions.macroscope.default()<cr>", "Macros" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
       -- x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
       -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
-      x = { "<cmd>Telescope cder<cr>", "Change Directory" },
-      e = { "!!$SHELL<CR>", "Execute line" },
-      o = { "<cmd>lua require('utils.term').docker_client_toggle()<CR>", "Docker" },
-      W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
-      w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
-      z = { "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "Zoxide" },
+      -- x = { "<cmd>Telescope cder<cr>", "Change Directory" },
+      -- e = { "!!$SHELL<CR>", "Execute line" },
+      -- o = { "<cmd>lua require('utils.term').docker_client_toggle()<CR>", "Docker" },
+      -- W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
+      -- w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
+      -- z = { "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "Zoxide" },
     },
 
     g = {
       name = "Git",
-      b = { "<cmd>GitBlameToggle<CR>", "Blame" },
+      -- b = { "<cmd>GitBlameToggle<CR>", "Blame" },
       c = { "<cmd>lua require('utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
       p = { "<cmd>Git push<CR>", "Push" },
       s = { "<cmd>lua require('neogit').open()<CR>", "Status - Neogit" },
       S = { "<cmd>Git<CR>", "Status - Fugitive" },
-      y = {
-        "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
-        "Link",
-      },
-      g = { "<cmd>lua require('telescope').extensions.gh.gist()<CR>", "Gist" },
-      z = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git TUI" },
+      -- y = {
+      --   "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+      --   "Link",
+      -- },
+      -- g = { "<cmd>lua require('telescope').extensions.gh.gist()<CR>", "Gist" },
+      -- z = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git TUI" },
       h = { name = "Hunk" },
       t = { name = "Toggle" },
       x = { "<cmd>lua require('telescope.builtin').git_branches()<cr>", "Switch Branch" },

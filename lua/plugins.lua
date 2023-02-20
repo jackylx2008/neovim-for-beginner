@@ -815,7 +815,7 @@ function M.setup()
     -- trouble.nvim
     use {
       "folke/trouble.nvim",
-       requires = "nvim-tree/nvim-web-devicons", 
+      requires = "nvim-tree/nvim-web-devicons",
       cmd = { "TroubleToggle", "Trouble" },
       module = { "trouble.providers.telescope" },
       config = function()
@@ -924,7 +924,7 @@ function M.setup()
         },
       },
       config = function()
-        require("config.dap").setup()
+        -- require("config.dap").setup()
       end,
       disable = false,
     }
