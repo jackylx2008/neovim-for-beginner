@@ -141,4 +141,4 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-") ]]
-vim.cmd.colorscheme [[catppuccin]]
+vim.cmd.colorscheme [[tokyonight]]
